@@ -1,5 +1,10 @@
-@extends('layout.master')
+@extends('layouts.master')
+@if (session('ZINUTE'))
+  <div class="alert alert-success">
+    {{session('ZINUTE')}}
+  </div>
 
+@endif
 @section('content')
   <section class="ftco-cover" style="background-image: url({{asset('images/bg_3.jpg')}});backgroud-size: 50px 50px;" id="section-home">
         <div class="container">

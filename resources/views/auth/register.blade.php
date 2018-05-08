@@ -93,27 +93,27 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group row">
-                            <label for="Name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="Name" type="text" class="form-control{{ $errors->has('Name') ? ' is-invalid' : '' }}" name="Name" value="{{ old('Name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}"  autofocus>
 
-                                @if ($errors->has('Name'))
+                                @if ($errors->has('name'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('Name') }}</strong>
+                                        <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="Surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
 
                             <div class="col-md-6">
-                                <input id="Surname" type="text" class="form-control{{ $errors->has('Surname') ? ' is-invalid' : '' }}" name="Surname" value="{{ old('Surname') }}" required autofocus>
+                                <input id="surname" type="text" class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" name="surname" value="{{ old('surname') }}"  autofocus>
 
-                                @if ($errors->has('Surname'))
+                                @if ($errors->has('surname'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('Surname') }}</strong>
+                                        <strong>{{ $errors->first('surname') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -123,7 +123,7 @@
                             <label for="date-of-birth" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
 
                             <div class="col-md-6">
-                                <input id="date-of-birth" type="text" class="form-control{{ $errors->has('date-of-birth') ? ' is-invalid' : '' }}" name="Surname" value="{{ old('date-of-birth') }}" required autofocus>
+                                <input id="date-of-birth" type="text" class="form-control{{ $errors->has('date-of-birth') ? ' is-invalid' : '' }}" name="date-of-birth" value="{{ old('date-of-birth') }}" required autofocus>
 
                                 @if ($errors->has('date-of-birth'))
                                     <span class="invalid-feedback">
@@ -134,14 +134,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="Address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
                             <div class="col-md-6">
-                                <input id="Address" type="text" class="form-control{{ $errors->has('Address') ? ' is-invalid' : '' }}" name="Address" value="{{ old('Address') }}" required autofocus>
+                                <input id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') }}" required autofocus>
 
-                                @if ($errors->has('Address'))
+                                @if ($errors->has('city'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('Address') }}</strong>
+                                        <strong>{{ $errors->first('city') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -152,7 +152,7 @@
                             <label for="phone-number" class="col-md-4 col-form-label text-md-right">{{ __('Phone number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone-number" type="text" class="form-control{{ $errors->has('phone-number') ? ' is-invalid' : '' }}" name="City" value="{{ old('phone-number') }}" required autofocus>
+                                <input id="phone-number" type="text" class="form-control{{ $errors->has('phone-number') ? ' is-invalid' : '' }}" name="phone-number" value="{{ old('phone-number') }}" required autofocus>
 
                                 @if ($errors->has('phone-number'))
                                     <span class="invalid-feedback">
@@ -176,36 +176,21 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                          <div class="dropdown">
-                            <button class="" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Country
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
+                          <select name="country">
+                              <option value="LITHUANIA">LITHUANIA</option>
+                              <option value="COLUMBIA">COLUMBIA</option>
+                              <option value="RUSSIA">RUSSIA</option>
+                              <option value="Audi">Audi</option>
+                            </select>
+
                           </div>
-                                @if ($errors->has('Country'))
+                                @if ($errors->has('country'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('Country') }}</strong>
+                                        <strong>{{ $errors->first('country') }}</strong>
                                     </span>
                                 @endif
                             </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="City" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
-                          <div class="col-md-6">
-                            <input id="City" type="text" class="form-control{{ $errors->has('City') ? ' is-invalid' : '' }}" name="City" value="{{ old('City') }}" required autofocus>
-
-                            @if ($errors->has('City'))
-                              <span class="invalid-feedback">
-                                <strong>{{ $errors->first('City') }}</strong>
-                              </span>
-                            @endif
-                          </div>
-                        </div>
                         <div class="form-group row">
                             <label for="zip-code" class="col-md-4 col-form-label text-md-right">{{ __('Zip Code') }}</label>
 

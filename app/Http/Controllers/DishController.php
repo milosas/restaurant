@@ -45,7 +45,7 @@ class DishController extends Controller
       'main_id' => $request->input('main_id'),
     ]);
 
-    return redirect()->route('dish')->with('ZINUTE', 'PRODUKTAS ISSAUGOTAS');
+    return redirect()->route('adminDishes')->with('ZINUTE', 'PRODUKTAS ISSAUGOTAS');
     }
 
     /**
@@ -98,7 +98,7 @@ class DishController extends Controller
         'price' => $request->input('price'),
         'main_id' => $request->input('main_id'),
 ]);
-return redirect()->route('dish')->with('ZINUTE', 'PRODUKTAS ISSAUGOTAS');
+return redirect()->route('adminDishes')->with('ZINUTE', 'PRODUKTAS ISSAUGOTAS');
 }
 
 
@@ -108,11 +108,23 @@ return redirect()->route('dish')->with('ZINUTE', 'PRODUKTAS ISSAUGOTAS');
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Dish $dish)
     {
       // $this->authorize('delete',Dish::class);
 
-  Dish::findOrFail($id)->delete();
-  return redirect()->route('dish')->with('ZINUTE','Sekmingai istrinta');
+  $dish->delete();
+  return redirect()->route('adminDishes')->with('ZINUTE','Sekmingai istrinta');
     }
+    public function adminIndex() {
+      $dishes = Dish::all();
+      $mains = Main::all();
+
+      return view ('admin.dishlist', compact('dishes','mains'));
+    }
+    public function admindishedit(Dish $dish){
+      $main = Main::all();
+      // $dish = Dish::all();
+      return view ('admin.dishedit', compact('dish', 'main'));
+    }
+
 }
