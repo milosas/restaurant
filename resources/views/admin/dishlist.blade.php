@@ -16,11 +16,12 @@
 <td>{{$dish->description}}</td>
 <td>{{$dish->price}}</td>
 <td>
-@foreach ($mains as $main)
-@if ($main->id == $dish->main_id)
+{{-- @foreach ($mains as $main) --}}
+{{-- @if ($main->id == $dish->main_id)
   {{$main->title}}
-@endif
-@endforeach
+@endif --}}
+{{-- @endforeach --}}
+{{$dish->toMain->title}}
 </td>
 <td><a class="btn btn-success" href="{{route('admindishedit', $dish)}}">EDIT</a></td>
 <td><form class="" action="{{route('dish.delete',$dish->id)}}" method="post">

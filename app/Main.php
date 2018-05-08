@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Main extends Model
 {
-    //
+  protected $fillable = ['title'];
+
+  public function toDishes(){
+    return $this->hasmany(Dish::class);
+  }
 }

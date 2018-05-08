@@ -14,7 +14,9 @@ class MainController extends Controller
      */
     public function index()
     {
-        //
+      $mains = Main::all();
+
+      return view('admin.mainList', compact('mains'));
     }
 
     /**
@@ -24,7 +26,7 @@ class MainController extends Controller
      */
     public function create()
     {
-        //
+      return view('main.mainCreate', compact('mains'));
     }
 
     /**
@@ -35,7 +37,11 @@ class MainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Main::create([
+      'title' => $request->input('title'),
+
+    ]);
+    return redirect()->route ('adminMains')->with ('ZINUTE','MAIN SAVED');
     }
 
     /**
@@ -57,7 +63,8 @@ class MainController extends Controller
      */
     public function edit(Main $main)
     {
-        //
+      // $dish = Dish::all();
+      return view ('main.edit', compact('main'));
     }
 
     /**
@@ -69,7 +76,10 @@ class MainController extends Controller
      */
     public function update(Request $request, Main $main)
     {
-        //
+        $main->update([
+          'title'=>$request->input('title'),
+        ]);
+        return redirect()->route('adminMains')->with('ZINUTE',"MAIN UPDATED");
     }
 
     /**
@@ -80,6 +90,7 @@ class MainController extends Controller
      */
     public function destroy(Main $main)
     {
-        //
+      $main->delete();
+      return redirect()->route('adminMains')->with('ZINUTE','Sekmingai istrinta');
     }
 }

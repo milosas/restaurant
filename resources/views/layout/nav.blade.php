@@ -7,7 +7,7 @@
 
        <div class="collapse navbar-collapse" id="ftco-nav">
          <ul class="navbar-nav ml-auto">
-           <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
+           <li class="nav-item active"><a href="{{route('admin')}}" class="nav-link">ADMIN</a></li>
            <li class="nav-item"><a href="#section-about" class="nav-link">About</a></li>
            <li class="nav-item"><a href="#section-offer" class="nav-link">Offer</a></li>
            <li class="nav-item"><a href="#section-menu" class="nav-link">Menu</a></li>
@@ -44,4 +44,3 @@
        </div>
      </div>
    </nav>
-   <!-- END nav -->

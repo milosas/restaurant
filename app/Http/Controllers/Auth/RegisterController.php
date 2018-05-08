@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use config\countries;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/dishes';
 
     /**
      * Create a new controller instance.
@@ -51,12 +51,12 @@ class RegisterController extends Controller
         return Validator::make($data, [
           'name' => 'required|string|max:255',
         'surname' => 'required|string|max:25',
-        'date-of-birth' => 'required|string',
+        'date-of-birth' => 'required|date',
         'phone-number' => 'required|string',
         'email' => 'required|string|email|max:255|unique:users',
         'country' => 'required|string',
         'city' => 'required|string',
-        'zip-code' => 'required|string',
+        'zip-code' => 'required|integer',
         'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -72,13 +72,14 @@ class RegisterController extends Controller
         return User::create([
           'name' => $data['name'],
             'surname' => $data['surname'],
-            'date-of-birth' => $data['date-of-birth'],
-            'phone-number' => $data['phone-number'],
+            'date_of_birth' => $data['date-of-birth'],
+            'phone_number' => $data['phone-number'],
             'country' => $data['country'],
             'city' => $data['city'],
-            'zip-code' => $data['zip-code'],
+            'zip_code' => $data['zip-code'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
     }
 }
