@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dishes', 'DishController@index')->name('dish');
 Route::get('/dishes/{id}', 'DishController@show')->name('singledish');
@@ -52,5 +51,10 @@ Route::group(['middleware'=>['admin'], 'prefix'=>'admin'],function(){
   Route::delete('/users/{user}','UserController@destroy')->name('userDelete'); //istrinam
 
 });
+Route::get('/cart', 'ShoppingCartController@index')->name('show.cart');
+Route::post('/cart', 'ShoppingCartController@addToCart')->name('addToCart');
+Route::post('/itemdelete','ShoppingCartController@destroy')->name('cart.dish.delete');
+Route::post('/itemminus', 'ShoppingCartController@minusDish')->name('cart.dish.minus');
+Route::get('/deletecart', 'ShoppingCartController@cleanCart')->name('cleanCart');
 
 // Route::get('/dishes/{id}/edit','DishController@edit')->name('dish.edit');

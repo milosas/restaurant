@@ -9,8 +9,9 @@
       <p class="card-text">Description: {{$dish->description}}</p>
       <p class="card-text">Main: {{$dish->main_id}}</p>
       <p class="card-text">Price: {{$dish->price}} $</p>
+      <a href="{{route('singledish',$dish->id)}}" class="btn btn-danger">ADD TO CART</a>
 
-    @auth
+    @if(Auth::user() && Auth::user()->role=== 'admin')
       <a class="btn btn-warning" href="{{route('dish.create')}}">Create</a>
       <form class=""  action="{{route('dish.delete', $dish->id)}}" method="POST">
             @method('DELETE')
@@ -18,7 +19,7 @@
             <button type="submit" class="btn btn-danger" name="button">Trinti</button>
       </form>
       <a class="btn btn-warning" href="{{route('dishes.edit', $dish)}}">UPDATE</a>
-    @endauth
+    @endif
     </div>
 
 </div>

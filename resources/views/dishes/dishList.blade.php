@@ -1,11 +1,11 @@
 @extends('layout.master')
+@section('content')
 @if (session('ZINUTE'))
   <div class="alert alert-success">
     {{session('ZINUTE')}}
   </div>
 
 @endif
-@section('content')
 <br>
 <br>
 <div class="row">
@@ -18,6 +18,13 @@
     <h5 class="card-title">{{$ey->title}}</h5>
     <p class="card-text">{{$ey->description}}</p>
     <a href="{{route('singledish',$ey->id)}}" class="btn btn-primary">More Details</a>
+
+    <form class="" action="{{route('addToCart')}}" method="post">
+      @csrf
+      <input type="hidden" name="id" value="{{$ey->id}}">
+    <button type="submit"  class="btn btn-danger">ADD TO CART</a>
+    </form>
+
   </div>
 </div>
 @endforeach
