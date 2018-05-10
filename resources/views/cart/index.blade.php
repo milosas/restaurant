@@ -65,13 +65,17 @@
     <td></td>
     <td></td>
     <th>
-
-
       <a href="{{route('cleanCart')}}" class="btn btn-danger">REMOVE BAG</a>
-
   </th>
   </tr>
-
+  <td></td><td></td><td></td><td></td><td></td>
+  <td>
+    <form class="" action="{{route('cart.dish.delete')}}" method="post">
+        @csrf
+      <input type="hidden" name="id" value="{{$dish['item']['id']}}">
+      <button type="submit"  class="btn btn-success">Checkout</a>
+      </form>
+</td>
   </table>
 @else{
   <h3 style="text-align:center">YOUR CART IS EMPTY</h3>

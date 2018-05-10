@@ -61,7 +61,7 @@ desired effect
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="#" class="logo">
+        <a href="{{route('welcome')}}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -137,7 +137,9 @@ desired effect
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="{{route('adminDishes')}}"><i class="fa fa-link"></i> <span>Dishes</span></a></li>
                 <li><a href="{{route('adminMains')}}"><i class="fa fa-link"></i> <span>Mains</span></a></li>
-                <<li class="active"><a href="{{route('usersList')}}"><i class="fa fa-link"></i> <span>USERS</span></a></li>
+                <li class="active"><a href="{{route('usersList')}}"><i class="fa fa-link"></i> <span>USERS</span></a></li>
+                <<li class="active"><a href="{{route('reservation.index')}}"><i class="fa fa-link"></i> <span>RESERVATIONS</span></a></li>
+
                     </ul>
                 </li>
             </ul>

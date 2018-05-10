@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-use config\countries;
+use Countries;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
 class RegisterController extends Controller
 {
     /*
@@ -39,6 +38,11 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
+    public function showRegistrationForm()
+{
+    $countries = Countries::all();
+    return view('auth.register', compact('countries'));
+}
 
     /**
      * Get a validator for an incoming registration request.
@@ -48,8 +52,9 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
-          'name' => 'required|string|max:255',
+        'name' => 'required|string|max:255',
         'surname' => 'required|string|max:25',
         'date-of-birth' => 'required|date',
         'phone-number' => 'required|string',
@@ -69,6 +74,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+    
         return User::create([
           'name' => $data['name'],
             'surname' => $data['surname'],

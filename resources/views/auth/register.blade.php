@@ -177,12 +177,10 @@
                         </div>
                         <div class="form-group row">
                           <select name="country">
-                              <option value="LITHUANIA">LITHUANIA</option>
-                              <option value="COLUMBIA">COLUMBIA</option>
-                              <option value="RUSSIA">RUSSIA</option>
-                              <option value="Audi">Audi</option>
-                            </select>
-
+                          @foreach ($countries as $country)
+                              <option value="{{$country->name->common}}">{{$country->name->common}}</option>
+                            @endforeach
+                          </select>
                           </div>
                                 @if ($errors->has('country'))
                                     <span class="invalid-feedback">

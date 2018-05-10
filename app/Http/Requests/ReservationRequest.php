@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDishRequest extends FormRequest
+class ReservationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,15 @@ class StoreDishRequest extends FormRequest
     public function rules()
     {
         return [
-          'title' => 'required',
-        'description' => 'required',
-        'image_url' => 'required',
-        'price' => 'required',
-        'main_id' => 'required',
+        'name' => 'required',
+        'surname' => 'required',
+        'email' => 'required',
+        'phone_number' => 'required',
+        'number_of_people' => 'required',
+        'date_reservation' => 'required',
+        'time_of_reservation' => 'required',
+        'message' => 'required',
+
         ];
     }
 }

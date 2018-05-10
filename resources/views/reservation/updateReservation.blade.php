@@ -1,3 +1,5 @@
+@extends('layouts.master')
+@section('content')
 <!-- Modal -->
    <div class="modal fade" id="reservationModal" tabindex="-1" role="dialog" aria-labelledby="reservationModalLabel" aria-hidden="true">
      <div class="modal-dialog modal-lg" role="document">
@@ -116,5 +118,5 @@
        </div>
      </div>
    </div>
-
+@endsection
    <!-- END Modal -->

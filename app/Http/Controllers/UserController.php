@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Countries;
 class UserController extends Controller
 {
     /**
@@ -36,6 +37,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
       User::create([
       'name' => $request->input('name'),
       'surname' => $request->input('surname'),
