@@ -48,9 +48,9 @@ class ReservationController extends Controller
       'time_of_reservation' => $request->input('time_of_reservation'),
       'message' => $request->input('message'),
       ]);
-      if(Auth::user()->role==='admin'){
-        return redirect()->route('reservation.index')->with('ZINUTE', 'STALIUKU REZERVACIJA SEKMINGA');
-      }
+      // if(Auth::user()->role==='admin'){
+      //   return redirect()->route('reservation.index')->with('ZINUTE', 'STALIUKU REZERVACIJA SEKMINGA');
+      // }
       return redirect()->route('dish')->with('ZINUTE', 'STALIUKU REZERVACIJA SEKMINGA');
     }
 

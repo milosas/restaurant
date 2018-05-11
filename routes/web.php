@@ -64,10 +64,11 @@ Route::group(['middleware'=>['admin'], 'prefix'=>'admin'],function(){
   Route::get('/users/{user}', 'UserController@edit')->name('usersEdit'); // redaguojam
   Route::put('/users/{user}/update','UserController@update')->name('userUpdate'); //redaguojam
 
-
   Route::delete('/users/{user}','UserController@destroy')->name('userDelete'); //istrinam
+  });
+  Route::get('/usersProfile', 'UserController@show')->name('users.profile');
 
-});
+
 Route::get('/cart', 'ShoppingCartController@index')->name('show.cart');
 Route::post('/cart', 'ShoppingCartController@addToCart')->name('addToCart');
 Route::post('/itemdelete','ShoppingCartController@destroy')->name('cart.dish.delete');

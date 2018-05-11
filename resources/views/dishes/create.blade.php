@@ -29,7 +29,7 @@
 @endif
   <br>
   <input value="{{old('description')}}" name="description" class="form-control form-control-lg" type="text" placeholder="Description">
-  @if ($errors->has('title'))
+  @if ($errors->has('description'))
     <span class="invalid-feedback">
       <strong>{{$errors->first('description')}}</strong>
     </span>

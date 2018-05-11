@@ -29,22 +29,24 @@
         <li class="nav-item">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }} <span class="caret"></span>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
             </a>
-
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                   document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf
-                </form>
+          </form>
+              <a class="dropdown-item" href="{{route('users.profile')}}">Profile</a>
             </div>
         </li>
     @endguest
          </ul>
        </div>
      </div>
+
    </nav>

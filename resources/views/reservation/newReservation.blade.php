@@ -17,7 +17,7 @@
   <form class=""  action="{{route('submitReservation')}}" method="post">
     @csrf
 
-    <input value="" name="name" class="form-control form-control-lg {{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" placeholder="name">
+    <input value="{{old('name')}}" name="name" class="form-control form-control-lg {{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" placeholder="name">
     @if ($errors->has('name'))
     <span class="invalid-feedback">
     <strong>{{$errors->first('name')}}</strong>

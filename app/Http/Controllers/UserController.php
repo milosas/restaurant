@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+
 use Countries;
 class UserController extends Controller
 {
@@ -61,9 +63,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $orders = Auth::user()->orders;
+        $orders->transform(function($order){
+          $order->cart=unserialize($order->cart);
+          return $order;
+
+        });
+        return view ('users.profile', compact('orders', 'reservations'));
     }
 
     /**
