@@ -32,7 +32,8 @@
       @csrf
 
     <input type="hidden" name="id" value="{{$dish['item']['id']}}">
-    <button type="submit"  class="btn btn-warning"> + </a>
+    <input name="from" type="hidden" value="from">
+    <button  type="submit"  class="btn btn-warning"> + </button>
     </form>
   </td>    <td>
       <form class="" action="{{route('cart.dish.minus')}}" method="post">

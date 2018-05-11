@@ -80,10 +80,11 @@ desired effect
 
                     <!-- User Account Menu -->
                     <li class="nav-item">
+                      @auth
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
-
+@endauth
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -108,6 +109,7 @@ desired effect
         <section class="sidebar">
 
             <!-- Sidebar user panel (optional) -->
+@auth
             <div class="user-panel">
                 <div class="pull-left image">
                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
@@ -118,7 +120,7 @@ desired effect
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
-
+@endauth
             <!-- search form (Optional) -->
             <form action="#" method="get" class="sidebar-form">
                 <div class="input-group">

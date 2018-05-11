@@ -15,10 +15,13 @@ class ShoppingCartController extends Controller
       $oldCart = (Session::has('cart')) ? Session::get('cart') : null;
       $shopingCart = new ShoppingCart($oldCart);
       $shopingCart->add($dish);
+      $from = $request->input('from');
 
       $request->session()->put('cart',$shopingCart);
-
-      return redirect()->back()->with('ZINUTE', 'PRODUKTAS IDETAS I KREPSELi');
+      if(isset($from)){
+      return redirect()->back();
+      }
+      return response()->json($shopingCart);
     }
     public function index(){
       $cart = (Session::has('cart')) ? Session::get('cart') : null;

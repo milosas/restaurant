@@ -10,15 +10,16 @@
            <li class="nav-item active"><a href="{{route('admin')}}" class="nav-link">ADMIN</a></li>
            <li class="nav-item">
              <a href="{{route('show.cart')}}" class="nav-link">
-             <i class="fas fa-shopping-cart"></i><span class="caret">
+             <i class="fas fa-shopping-cart"></i><span id="total" class="caret">
              @if(Session::has('cart'))
                {{Session::get('cart')->totalQty}}
 
              @endif
              </span></li></a>
            <li class="nav-item"><a href="{{route('dish')}}" class="nav-link">Dishes</a></li>
+@auth
            <li class="nav-item"><a href="{{route('reservation.index')}}" class="nav-link">RESERVATIONS</a></li>
-
+@endauth
            @guest
            <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
