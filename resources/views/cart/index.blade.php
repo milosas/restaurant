@@ -71,11 +71,8 @@
   </tr>
   <td></td><td></td><td></td><td></td><td></td>
   <td>
-    <form class="" action="{{route('cart.dish.delete')}}" method="post">
-        @csrf
-      <input type="hidden" name="id" value="{{$dish['item']['id']}}">
-      <button type="submit"  class="btn btn-success">Checkout</a>
-      </form>
+
+      <a type="submit" href="{{route('checkout')}}" class="btn btn-success">Checkout</a>
 </td>
   </table>
 @else{

@@ -81,4 +81,6 @@ Route::get('/reservation/{reservation}', 'ReservationController@edit')->name('re
 Route::put('/reservation/{reservation}/update',   'ReservationController@update')->name('reservation.updateReservation');
 
 Route::get('/newReservation','ReservationController@create')->name('reservation.newReservation');
+
+Route::get('/checkout', 'OrderController@checkout')->name('checkout')->middleware('auth');
 // Route::get('/dishes/{id}/edit','DishController@edit')->name('dish.edit');
