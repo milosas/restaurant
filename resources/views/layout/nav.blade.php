@@ -16,6 +16,8 @@
 
              @endif
              </span></li></a>
+             <li class="nav-item"><a href="{{route('carts.cart')}}" class="nav-link">CART</a></li>
+
            <li class="nav-item"><a href="{{route('dish')}}" class="nav-link">Dishes</a></li>
 @auth
            <li class="nav-item"><a href="{{route('reservation.index')}}" class="nav-link">RESERVATIONS</a></li>
@@ -37,7 +39,7 @@
                    document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
             </a>
-            
+
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf
           </form>

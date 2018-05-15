@@ -25,6 +25,7 @@
     <button type="submit"  class="btn btn-danger">ADD TO CART</a>
     </form>
   <button data-id="{{$ey->id}}" type="button" class="carts btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Add JSON Cart</button>
+  <a href="{{route('add.cart', $ey->id)}}"  class="btn btn-danger">ADD TO NEW CART</a>
 
   </div>
 </div>

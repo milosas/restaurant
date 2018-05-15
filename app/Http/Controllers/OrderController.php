@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use App\Mail\OrderShiped;
-use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -16,20 +12,10 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function checkout(){
-       $cart = Session::get('cart'); // atidarom sesija
-       $order = new Order();
-       $order->cart = serialize($cart); // is objekto padaro stringa
-       Auth::user()->orders()->save($order);
-
-       Mail::to(Auth::user())->send(new OrderShiped($cart));
-
-       Session::forget('cart'); // pamirstam seseija
-       return redirect()->route('dish')->with('ZINUTE', 'SVEIKINAME! Mes uzdirbome 100$');
-     }
     public function index()
     {
-        //
+        $orders = Order::all();
+        return view ('orders.orderList', compact('orders'));
     }
 
     /**
