@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use App\Cart;
+use Illuminate\Support\Facades\Auth;
+use App\OrderItem;
 
 class OrderController extends Controller
 {
@@ -12,6 +15,31 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     public function __construct(){
+       $this->middleware('auth');
+     }
+     public function checkout(){
+
+       $cart = Cart::where('user_id', Auth::user()->id)->first();
+       $suma = 0;
+
+       foreach ($cart->cartItems as $cartItem) {
+         $suma += $cartItem->dish->price;
+       }
+       $order = new Order;
+       $order->total_paid = $suma;
+       $order->user_id = $cart->user_id;
+       $order->save();
+
+       foreach ($cart->cartItems as $cartItem) {
+       $orderItem = new OrderItem;
+       $orderItem->order_id = $order->id;
+       $orderItem->dish_id = $cartItem->dish->id;
+       $orderItem->save();
+     }
+     $cart->delete();
+     return redirect()->route('carts.cart')->with('ZINUTE', 'SEKMINGAI UZSAKYTA');
+     }
     public function index()
     {
         $orders = Order::all();

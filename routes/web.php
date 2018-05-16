@@ -83,9 +83,12 @@ Route::put('/reservation/{reservation}/update',   'ReservationController@update'
 
 Route::get('/newReservation','ReservationController@create')->name('reservation.newReservation');
 
-Route::get('/checkout', 'OrderController@checkout')->name('checkout')->middleware('auth');
 Route::get('/addDish/{dishId}', 'CartController@addItem')->name('add.cart');
 Route::get('/newCart', 'CartController@showCart')->name('carts.cart');
 Route::delete('/newCart/{cartItem}', 'CartController@destroy')->name('carts.dish.delete');
 Route::get('/ordersList', 'OrderController@index')->name('orders.orderList');
+Route::get('/addDishAjax/{dishId}', 'CartController@addItemAjax')->name('add.dish.ajax');
+Route::delete('/deleteajaxcart/{cart}', 'CartController@cleanCart')->name('deleteajaxcart');
+Route::get('/checkout', 'OrderController@checkout')->name('checkout')->middleware('auth');
+
 // Route::get('/dishes/{id}/edit','DishController@edit')->name('dish.edit');

@@ -12,8 +12,8 @@
 
 @foreach ($dish as $ey)
 
-<div class="col-sm-4 md-4" style="width: 18rem;">
-  <img class="card-img-top" src="{{$ey->image_url}}" alt="Card image cap">
+<div class="col-sm-2 md-2" style="width: 18rem;">
+  <img class="card-img-top" height="215" width="25" src="{{$ey->image_url}}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{$ey->title}}</h5>
     <p class="card-text">{{$ey->description}}</p>
@@ -25,12 +25,10 @@
     <button type="submit"  class="btn btn-danger">ADD TO CART</a>
     </form>
   <button data-id="{{$ey->id}}" type="button" class="carts btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Add JSON Cart</button>
-  <a href="{{route('add.cart', $ey->id)}}"  class="btn btn-danger">ADD TO NEW CART</a>
-
+  <a href="{{route('add.cart', $ey->id)}}"  class="btn btn-danger jquery"  data-dish="{{$ey->id}}">ADD TO NEW AJAX CART</a>
   </div>
 </div>
 @endforeach
-<button id="asd" type="button" name="button">asd</button>
 </div>
 
 

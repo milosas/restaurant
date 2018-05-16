@@ -26,6 +26,22 @@ class CartController extends Controller
 
       return redirect()->back();
     }
+    public function addItemAjax($dishId){
+      $cart = Cart::where('user_id', Auth::user()->id)->first();
+      if(!$cart){
+        $cart = new Cart();
+        $cart->user_id = Auth::user()->id;
+        $cart->save();
+      }
+      $cartItem = new CartItem();
+      $cartItem->cart_id = $cart->id;
+      $cartItem->dish_id = $dishId;
+      $cartItem->save();
+
+      $items = $cart->cartItems;
+      return response()->json(['items'=>$items]);
+
+    }
     public function showCart(){
       $cart = Cart::where('user_id', Auth::user()->id)->first(); // first paima duomenys
       if(!$cart){
@@ -39,10 +55,15 @@ class CartController extends Controller
         $totalPrice += $item->dish->price;
       }
       $totalItems = count($items);
-      return view('carts.cart', compact('totalPrice', 'totalItems', 'items'));
+      return view('carts.cart', compact('totalPrice', 'totalItems', 'items', 'cart'));
     }
     public function destroy(CartItem $cartItem){
       $cartItem->delete();
       return redirect()->route('carts.cart')->with('ZINUTE','Sekmingai istrinta');
+    }
+    public function cleanCart(Cart $cart){
+      $cart->delete();
+      return redirect()->route('carts.cart')->with('ZINUTE','Cart  istrinta');
+
     }
 }
