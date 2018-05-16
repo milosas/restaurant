@@ -91,4 +91,6 @@ Route::get('/addDishAjax/{dishId}', 'CartController@addItemAjax')->name('add.dis
 Route::delete('/deleteajaxcart/{cart}', 'CartController@cleanCart')->name('deleteajaxcart');
 Route::get('/checkout', 'OrderController@checkout')->name('checkout')->middleware('auth');
 
+Route::get('/userorderList/{order}', 'OrderController@show')->name('orders.itemList');
+
 // Route::get('/dishes/{id}/edit','DishController@edit')->name('dish.edit');

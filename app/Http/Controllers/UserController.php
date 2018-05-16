@@ -66,11 +66,6 @@ class UserController extends Controller
     public function show()
     {
         $orders = Auth::user()->orders;
-        $orders->transform(function($order){
-          $order->cart=unserialize($order->cart);
-          return $order;
-
-        });
         return view ('users.profile', compact('orders', 'reservations'));
     }
 

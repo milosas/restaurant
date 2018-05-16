@@ -17,7 +17,7 @@
              @endif
              </span></li></a>
              <li class="nav-item"><a href="{{route('carts.cart')}}" class="nav-link">Cart
-              <span id="jquery" class="caret">{{$totalItems}}</span></a></li>
+              {{-- <span id="jquery" class="caret">{{$totalItems}}</span></a></li> --}}
            <li class="nav-item"><a href="{{route('dish')}}" class="nav-link">Dishes</a></li>
 @auth
            <li class="nav-item"><a href="{{route('reservation.index')}}" class="nav-link">RESERVATIONS</a></li>

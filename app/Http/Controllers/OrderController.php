@@ -21,6 +21,7 @@ class OrderController extends Controller
      public function checkout(){
 
        $cart = Cart::where('user_id', Auth::user()->id)->first();
+       if(count($cart->cartItems)>0){
        $suma = 0;
 
        foreach ($cart->cartItems as $cartItem) {
@@ -34,12 +35,15 @@ class OrderController extends Controller
        foreach ($cart->cartItems as $cartItem) {
        $orderItem = new OrderItem;
        $orderItem->order_id = $order->id;
-       $orderItem->dish_id = $cartItem->dish->id;
+       $orderItem->dish_id = $cartItem->dish_id;
        $orderItem->save();
      }
      $cart->delete();
      return redirect()->route('carts.cart')->with('ZINUTE', 'SEKMINGAI UZSAKYTA');
      }
+   return redirect()->route('carts.cart')->with('ZINUTE', 'Jusu krepselis tuscias');
+
+}
     public function index()
     {
         $orders = Order::all();
@@ -75,7 +79,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+      $totalPrice = $order->total_paid;
+      $orderItems = OrderItem::where('order_id', $order->id);
+      return view('orders.itemList', compact ('orderItems', 'totalPrice'));
     }
 
     /**
