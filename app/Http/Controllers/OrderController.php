@@ -44,10 +44,14 @@ class OrderController extends Controller
    return redirect()->route('carts.cart')->with('ZINUTE', 'Jusu krepselis tuscias');
 
 }
-    public function index()
+    public function index(Order $order)
     {
         $orders = Order::all();
-        return view ('orders.orderList', compact('orders'));
+        $totalPaid = 0;
+        foreach ($orders as $order) {
+          $totalPaid += $order->total_paid;
+        }
+        return view ('orders.orderList', compact('orders', 'totalPaid', 'orderItems'));
     }
 
     /**
@@ -80,7 +84,9 @@ class OrderController extends Controller
     public function show(Order $order)
     {
       $totalPrice = $order->total_paid;
-      $orderItems = OrderItem::where('order_id', $order->id);
+      $orderItems = OrderItem::where('order_id', $order->id)->get();
+      // $orderItems = $order->orderItems;
+
       return view('orders.itemList', compact ('orderItems', 'totalPrice'));
     }
 

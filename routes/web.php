@@ -65,6 +65,7 @@ Route::group(['middleware'=>['admin'], 'prefix'=>'admin'],function(){
   Route::put('/users/{user}/update','UserController@update')->name('userUpdate'); //redaguojam
 
   Route::delete('/users/{user}','UserController@destroy')->name('userDelete'); //istrinam
+  Route::get('/orderList', 'OrderController@index')->name('orders.index');
   });
   Route::get('/usersProfile', 'UserController@show')->name('users.profile');
 

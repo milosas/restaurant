@@ -9,14 +9,11 @@
       </tr>
   </thead>
   <tbody>
-    {{dd($orderItems)}}
-
     @foreach ($orderItems as $orderItem)
       <tr>
-        <td>{{$orderItem->name}}</td>
-        <td>{{$orderItem->price}}</td>
+        <td>{{$orderItem->dish->title}}</td>
+        <td>{{$orderItem->dish->price}}</td>
       </tr>
-      {{dd($orderItem)}}
     @endforeach
   </tbody>
   <tfoot>
