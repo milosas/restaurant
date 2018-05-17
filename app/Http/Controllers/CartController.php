@@ -62,8 +62,10 @@ class CartController extends Controller
       return redirect()->route('carts.cart')->with('ZINUTE','Sekmingai istrinta');
     }
     public function cleanCart(Cart $cart){
+      if(count($cart->cartItems)>0){
       $cart->delete();
-      return redirect()->route('carts.cart')->with('ZINUTE','Cart  istrinta');
-
-    }
+    return redirect()->route('carts.cart')->with('ZINUTE','Cart  istrinta');
+  }
+  return redirect()->route('carts.cart')->with('ZINUTE','Cart  TUSCIAS - Negalima isstrinti');
+  }
 }
